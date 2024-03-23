@@ -7,7 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #1a1a1a;
+            color: #fff;
             margin: 0;
             padding: 0;
             display: flex;
@@ -16,21 +17,32 @@
             height: 100vh;
         }
         form {
-            background-color: #fff;
+            background-color: #292929;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         input[type="text"],
         input[type="password"],
         input[type="submit"] {
-            width: 100%;
+            width: calc(100% - 22px);
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+            background-color: #1a1a1a;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+        }
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #ccc;
         }
         input[type="submit"] {
             background-color: #4caf50;
