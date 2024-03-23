@@ -1,11 +1,11 @@
 CREATE table accounts(
-  name TEXT;
-  username TEXT;
-  password TEXT;
-  id int FOREIGN KEY;
+  "name" TEXT,
+  "username" TEXT,
+  "password" TEXT,
+  "id" INT FOREIGN KEY
 );
 
 CREATE table posts(
-  message TEXT;
-  username TEXT;
+  "message" TEXT,
+  "username" TEXT
 );
