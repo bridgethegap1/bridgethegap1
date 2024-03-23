@@ -1,21 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #000;
+            background-color: #1a1a1a;
             color: #fff;
             font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         a {
             color: #fff;
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-size: 24px;
+            margin: 10px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
         }
 
         a:hover {
             color: #00ffcc;
+            border-color: #00ffcc;
+        }
+
+        /* Add some animation for a futuristic effect */
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-50%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        a {
+            animation: slideInFromLeft 1s ease-out forwards;
         }
     </style>
 </head>
@@ -24,9 +58,6 @@
     <a href="science.html">Science</a>
     <a href="language.html">Languages</a>
     <a href="theMath.html">Math</a>
-    <a href="disscusionpage.html">Disscusion Page</a>
-
     
 </body>
 </html>
-</body>
