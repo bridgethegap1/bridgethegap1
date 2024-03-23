@@ -23,11 +23,22 @@ def login():
     return render_template("/index.html",logged_in_user=logged_in_user)
   else 
     return render_template("/login.html")
-@app.route("/discussion",methods=["POST"]
-def post():
+@app.route("/discussion",methods=["POST","GET"])
+def discussion():
   if request.method == "POST":
-    request.form.get("message")
-    
+    message=request.form.get("message")
+    username=request.form.get("username")
+    discussion_post=db.execute("INSERT into posts (message,username) VALUES(?,?)",(message,username))
+    return render_template("/discussion.html")
+  else:
+    past_posts=db.execute("SELECT username from posts")
+    past_posts_usernames=db.fetchall()
+    past_posts=db.execute("SELECT message from posts")
+    past_posts_messages=db.fetchall()
+    return render_template("/discussion.html",past_posts_usernames=past_posts_usernames,past_posts_messages=past_posts_messages)
+
+  
+  
       
   
   
