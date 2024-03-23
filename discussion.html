@@ -1,6 +1,6 @@
 <html>
   <style>
-    div {
+            div {
                 max-width: 350px;
                 max-height: 350px;
                 margin: 0 auto;
@@ -73,9 +73,9 @@
         </div>
       {% endfor %}
     </div>
-    <form>
-      <input type="text" name="message" placeholder="Type Your Message Here">
-      <button action="/post" name="post" type="submit">Post Message</button>
+    <form action="/post">
+      <input type="text" name="message" placeholder="Type Your Message Here" required>
+      <button name="post" type="submit">Post Message</button>
     </form> 
   </body>
 </html>
