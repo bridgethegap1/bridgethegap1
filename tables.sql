@@ -7,5 +7,6 @@ CREATE table accounts(
 
 CREATE table posts(
   "message" TEXT,
-  "username" TEXT
+  "username" TEXT,
+  "person_id" INT
 );
