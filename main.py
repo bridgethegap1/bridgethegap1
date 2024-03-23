@@ -45,4 +45,4 @@ def register():
         conn.commit()
         return render_template("/index.html")
     else:
-        return render_template("/register.html")
+        return render_template("/create_account.html")
