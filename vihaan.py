@@ -16,7 +16,6 @@ def login():
     session.clear()
     username=request.form.get("username")
     password=request.form.get("password")
-    subject=request.form.get("subject")
     rows=db.execute("Select * from accounts")
     account_info=db.execute("SELECT username from accounts WHERE username=? AND password=?",(username,password))
     accounts=db.fetchall()
@@ -26,6 +25,10 @@ def login():
     return render_template("/login.html")
 @app.route("/discussion",methods=["POST"]
 def post():
+  if request.method == "POST":
+    request.form.get("message")
+    
+      
   
   
     
