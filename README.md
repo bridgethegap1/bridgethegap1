@@ -1,119 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Send Email</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #1a1a1a;
             color: #fff;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
         }
 
-        form {
-            background-color: #292929;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            width: 300px;
+        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        textarea {
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
             width: 100%;
             padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
             box-sizing: border-box;
-            background-color: #1a1a1a;
-            color: #fff;
-            resize: none;
         }
 
-        input[type="submit"] {
+        .login-button {
             background-color: #00ffcc;
             color: #1a1a1a;
             border: none;
             padding: 10px 20px;
-            margin-top: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .login-button:hover {
+            background-color: #009688;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 10px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
+        }
+
+        a:hover {
+            color: #00ffcc;
+            border-color: #00ffcc;
+        }
+
+        select {
+            background-color: #00ffcc;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        input[type="submit"]:hover {
+        select:hover {
             background-color: #009688;
-        }
-
-        select {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #1a1a1a;
-            color: #fff;
         }
     </style>
 </head>
 
 <body>
-
-    <form id="emailForm">
-        <label for="body" style="color: #00ffcc;">Body:</label><br>
-        <textarea id="body" name="body" rows="5" cols="30" placeholder="Enter your message here..." required>
-Hello Tutor! This is an automated email from BridgeTheGap asking for you to tutor me. Please reply to this email if you can tutor me. My preferred language is [Preferred Language], so please Google translate your future email in that language. Thank you!
-    </textarea>
-        <br>
-        <label for="languageSelect" style="color: #00ffcc;">Preferred Language:</label>
+    <div class="topbar">
+        <button class="login-button" id="loginButton">Login</button>
+    </div>
+    <div class="container">
+        <a href="english.html">English</a>
+        <a href="science.html">Science</a>
+        <a href="language.html">Languages</a>
+        <a href="theMath.html">Math</a>
         <select id="languageSelect">
             <option value="english">English</option>
             <option value="spanish">Español</option>
             <option value="french">Français</option>
-            <option value="dutch">Deutsch</option>
+            <option value="german">Deutsch</option>
             <option value="italian">Italiano</option>
             <option value="hindi">हिन्दी</option>
-            <!-- Add more language options as needed -->
+            <!-- Add other languages here -->
         </select>
-        <br>
-        <input type="submit" value="Send Email">
-    </form>
+    </div>
 
     <script>
-        document.getElementById("emailForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent the form from submitting normally
+        const languageTranslations = {
+            "english": {
+                "title": "Welcome",
+                "link1": "English",
+                "link2": "Science",
+                "link3": "Languages",
+                "link4": "Math",
+                "loginButton": "Login"
+            },
+            "spanish": {
+                "title": "Bienvenido",
+                "link1": "Inglés",
+                "link2": "Ciencia",
+                "link3": "Idiomas",
+                "link4": "Matemáticas",
+                "loginButton": "Iniciar sesión"
+            },
+            "french": {
+                "title": "Bienvenue",
+                "link1": "Anglais",
+                "link2": "Science",
+                "link3": "Langues",
+                "link4": "Mathématiques",
+                "loginButton": "Connexion"
+            },
+            "german": {
+                "title": "Willkommen",
+                "link1": "Englisch",
+                "link2": "Wissenschaft",
+                "link3": "Sprachen",
+                "link4": "Mathematik",
+                "loginButton": "Anmeldung"
+            },
+            "italian": {
+                "title": "Benvenuto",
+                "link1": "Inglese",
+                "link2": "Scienza",
+                "link3": "Lingue",
+                "link4": "Matematica",
+                "loginButton": "Accesso"
+            },
+            "hindi": {
+                "title": "स्वागत",
+                "link1": "अंग्रेज़ी",
+                "link2": "विज्ञान",
+                "link3": "भाषाएँ",
+                "link4": "गणित",
+                "loginButton": "लॉग इन करें"
+            }
+            // Add translations for other languages as needed
+        };
 
-            // Retrieve form data
-            const body = document.getElementById("body").value;
-            const preferredLanguage = document.getElementById("languageSelect").value;
+        const languageSelect = document.getElementById('languageSelect');
+        const loginButton = document.getElementById('loginButton');
 
-            // Constants
-            const toEmail = "tutorsemail@email.com";
-            const subject = "Automated Tutor Request from BridgeTheGap";
-
-            // Insert preferred language into the email body
-                   const emailBody = body.replace("[Preferred Language]", "[" + preferredLanguage + "]");
-
-
-            // Construct mailto URL
-            const mailtoURL = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-
-            // Open email client in new tab
-            window.open(mailtoURL, "_blank");
+        languageSelect.addEventListener('change', () => {
+            const selectedLanguage = languageSelect.value;
+            translateEntireSite(selectedLanguage);
         });
-    </script>
 
+        function translateEntireSite(language) {
+            const translations = languageTranslations[language];
+            document.title = translations.title;
+            document.querySelectorAll('.container a').forEach((element, index) => {
+                element.textContent = translations['link' + (index + 1)];
+            });
+            loginButton.textContent = translations.loginButton;
+        }
+    </script>
 </body>
 
 </html>
