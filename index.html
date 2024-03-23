@@ -86,16 +86,18 @@
         <a href="science.html">Science</a>
         <a href="language.html">Languages</a>
         <a href="theMath.html">Math</a>
-        <select id="languageSelect">
-            <option value="english">English</option>
-            <option value="spanish">Español</option>
-            <option value="french">Français</option>
-            <option value="german">Deutsch</option>
-            <option value="italian">Italiano</option>
-            <option value="hindi">हिन्दी</option>
-            <!-- Add other languages here -->
-        </select>
+        <!-- Discussion Page -->
+        <a href="discussion.html">Discussions</a>
     </div>
+    <select id="languageSelect">
+        <option value="english">English</option>
+        <option value="spanish">Español</option>
+        <option value="french">Français</option>
+        <option value="german">Deutsch</option>
+        <option value="italian">Italiano</option>
+        <option value="hindi">हिन्दी</option>
+        <!-- Add other languages here -->
+    </select>
 
     <script>
         const languageTranslations = {
@@ -105,6 +107,7 @@
                 "link2": "Science",
                 "link3": "Languages",
                 "link4": "Math",
+                "discussionPage": "Discussions",
                 "loginButton": "Login"
             },
             "spanish": {
@@ -113,6 +116,7 @@
                 "link2": "Ciencia",
                 "link3": "Idiomas",
                 "link4": "Matemáticas",
+                "discussionPage": "Discusiones",
                 "loginButton": "Iniciar sesión"
             },
             "french": {
@@ -121,6 +125,7 @@
                 "link2": "Science",
                 "link3": "Langues",
                 "link4": "Mathématiques",
+                "discussionPage": "Discussions",
                 "loginButton": "Connexion"
             },
             "german": {
@@ -129,6 +134,7 @@
                 "link2": "Wissenschaft",
                 "link3": "Sprachen",
                 "link4": "Mathematik",
+                "discussionPage": "Diskussionen",
                 "loginButton": "Anmeldung"
             },
             "italian": {
@@ -137,6 +143,7 @@
                 "link2": "Scienza",
                 "link3": "Lingue",
                 "link4": "Matematica",
+                "discussionPage": "Discussioni",
                 "loginButton": "Accesso"
             },
             "hindi": {
@@ -145,6 +152,7 @@
                 "link2": "विज्ञान",
                 "link3": "भाषाएँ",
                 "link4": "गणित",
+                "discussionPage": "चर्चा",
                 "loginButton": "लॉग इन करें"
             }
             // Add translations for other languages as needed
@@ -165,8 +173,4 @@
                 element.textContent = translations['link' + (index + 1)];
             });
             loginButton.textContent = translations.loginButton;
-        }
-    </script>
-</body>
-
-</html>
+            document.querySelectorAll('.container a')[4].textContent = translations.disc
