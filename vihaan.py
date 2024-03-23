@@ -35,7 +35,9 @@ def discussion():
     past_posts_usernames=db.fetchall()
     past_posts=db.execute("SELECT message from posts")
     past_posts_messages=db.fetchall()
-    return render_template("/discussion.html",past_posts_usernames=past_posts_usernames,past_posts_messages=past_posts_messages)
+    past_posts_count=db.execute("SELECT COUNT(*) as n from posts")
+    count=db.fetchall()
+    return render_template("/discussion.html",past_posts_usernames=past_posts_usernames,past_posts_messages=past_posts_messages,count=count)
 
   
   
