@@ -38,12 +38,13 @@ def discussion():
     past_posts_count=db.execute("SELECT COUNT(*) as n from posts")
     count=db.fetchall()
     return render_template("/discussion.html",past_posts_usernames=past_posts_usernames,past_posts_messages=past_posts_messages,count=count)
-
-  
-  
-      
-  
-  
-    
-  
-  
+@app.route("/register",methods=["POST","GET"])
+def register():
+  if request.method=="POST":
+    name=request.form.get("name")
+    username=request.form.get("username")
+    password=request.form.get("password")
+    db.execute("INSERT INTO accounts(name,username,password) VALUES(?,?,?)",name,username,password)
+    return render_template("/index.html")
+  else:
+    return render_template("/register.html")
