@@ -82,10 +82,10 @@
         <a href="/login.html" class="login-button">Login</a>
     </div>
     <div class="container">
-        <a href="english.html">English</a>
-        <a href="science.html">Science</a>
-        <a href="language.html">Languages</a>
-        <a href="theMath.html">Math</a>
+        <a href="/templates/english.html">English</a>
+        <a href="/templates/science.html">Science</a>
+        <a href="/templates/language.html">Languages</a>
+        <a href="/templates/theMath.html">Math</a>
         <!-- Discussion Page -->
         <a href="discussion.html">Discussions</a>
     </div>
@@ -166,13 +166,11 @@
             translateEntireSite(selectedLanguage);
         });
 
-        function translateEntireSite(language){
+        function translateEntireSite(language) {
             const translations = languageTranslations[language];
             document.title = translations.title;
             document.querySelectorAll('.container a').forEach((element, index) => {
                 element.textContent = translations['link' + (index + 1)];
             });
-        }
-        
             loginButton.textContent = translations.loginButton;
             document.querySelectorAll('.container a')[4].textContent = translations.disc
