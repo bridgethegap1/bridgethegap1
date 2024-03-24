@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Received!</title>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            overflow: hidden;
+            /* Prevent scrolling */
+        }
+
+        #message-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            font-size: 3em;
+            font-family: Arial, sans-serif;
+        }
+
+        #fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* Prevent fireworks from blocking interactions */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="message-container">
+        <p>Message Received!</p>
+    </div>
+
+    <canvas id="fireworks"></canvas>
+
+    <script>
+        // Fireworks animation
+        const canvas = document.getElementById('fireworks');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+
+        function setup() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            window.addEventListener('resize', setup);
+
+            setInterval(() => {
+                createParticle();
+            }, 150);
+
+            animate();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                if (p.alpha <= 0) {
+                    particles.splice(index, 1);
+                } else {
+                    p.update();
+                    p.draw();
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        function createParticle() {
+            const x = Math.random() * canvas.width;
+            const y = canvas.height;
+            const radius = Math.random() * 3 + 2;
+            const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            const velocity = {
+                x: Math.random() * 6 - 3,
+                y: Math.random() * -15 - 5
+            };
+            particles.push(new Particle(x, y, radius, color, velocity));
+        }
+
+        class Particle {
+            constructor(x, y, radius, color, velocity) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.velocity = velocity;
+                this.alpha = 1;
+            }
+
+            update() {
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= 0.01;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+                ctx.restore();
+            }
+        }
+
+        setup();
+    </script>
+
+</body>
+
+</html>
