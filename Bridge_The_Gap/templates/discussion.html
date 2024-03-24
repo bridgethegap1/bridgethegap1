@@ -64,17 +64,10 @@
   </style>
   <body>
     <div>
-      {% for i in range(counts[0][0]) %}
-        <div>
-          <b>print(past_posts[1][i])</b>
-          print(" : ")
-          print(past_posts[0][i])
-        </div>
-      {% endfor %}
     </div>
-    <form action="/post">
+    <form>
       <input type="text" name="message" placeholder="Type Your Message Here" required>
-      <button name="post" type="submit">Post Message</button>
+      <a><button name="post" href="post.html">Post Message</button></a>
     </form> 
   </body>
 </html>
