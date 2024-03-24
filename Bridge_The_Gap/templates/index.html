@@ -166,13 +166,11 @@
             translateEntireSite(selectedLanguage);
         });
 
-        function translateEntireSite(language){
+        function translateEntireSite(language) {
             const translations = languageTranslations[language];
             document.title = translations.title;
             document.querySelectorAll('.container a').forEach((element, index) => {
                 element.textContent = translations['link' + (index + 1)];
             });
-        }
-        
             loginButton.textContent = translations.loginButton;
             document.querySelectorAll('.container a')[4].textContent = translations.disc
