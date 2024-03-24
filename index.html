@@ -98,79 +98,80 @@
         <option value="hindi">हिन्दी</option>
         <!-- Add other languages here -->
     </select>
+<script>
+    const languageTranslations = {
+        "english": {
+            "title": "Welcome",
+            "link1": "English",
+            "link2": "Science",
+            "link3": "Languages",
+            "link4": "Math",
+            "discussionPage": "Discussions",
+            "loginButton": "Login"
+        },
+        "spanish": {
+            "title": "Bienvenido",
+            "link1": "Inglés",
+            "link2": "Ciencia",
+            "link3": "Idiomas",
+            "link4": "Matemáticas",
+            "discussionPage": "Discusiones",
+            "loginButton": "Iniciar sesión"
+        },
+        "french": {
+            "title": "Bienvenue",
+            "link1": "Anglais",
+            "link2": "Science",
+            "link3": "Langues",
+            "link4": "Mathématiques",
+            "discussionPage": "Discussions",
+            "loginButton": "Connexion"
+        },
+        "german": {
+            "title": "Willkommen",
+            "link1": "Englisch",
+            "link2": "Wissenschaft",
+            "link3": "Sprachen",
+            "link4": "Mathematik",
+            "discussionPage": "Diskussionen",
+            "loginButton": "Anmeldung"
+        },
+        "italian": {
+            "title": "Benvenuto",
+            "link1": "Inglese",
+            "link2": "Scienza",
+            "link3": "Lingue",
+            "link4": "Matematica",
+            "discussionPage": "Discussioni",
+            "loginButton": "Accesso"
+        },
+        "hindi": {
+            "title": "स्वागत",
+            "link1": "अंग्रेज़ी",
+            "link2": "विज्ञान",
+            "link3": "भाषाएँ",
+            "link4": "गणित",
+            "discussionPage": "चर्चा",
+            "loginButton": "लॉग इन करें"
+        }
+        // Add translations for other languages as needed
+    };
 
-    <script>
-        const languageTranslations = {
-            "english": {
-                "title": "Welcome",
-                "link1": "English",
-                "link2": "Science",
-                "link3": "Languages",
-                "link4": "Math",
-                "discussionPage": "Discussions",
-                "loginButton": "Login"
-            },
-            "spanish": {
-                "title": "Bienvenido",
-                "link1": "Inglés",
-                "link2": "Ciencia",
-                "link3": "Idiomas",
-                "link4": "Matemáticas",
-                "discussionPage": "Discusiones",
-                "loginButton": "Iniciar sesión"
-            },
-            "french": {
-                "title": "Bienvenue",
-                "link1": "Anglais",
-                "link2": "Science",
-                "link3": "Langues",
-                "link4": "Mathématiques",
-                "discussionPage": "Discussions",
-                "loginButton": "Connexion"
-            },
-            "german": {
-                "title": "Willkommen",
-                "link1": "Englisch",
-                "link2": "Wissenschaft",
-                "link3": "Sprachen",
-                "link4": "Mathematik",
-                "discussionPage": "Diskussionen",
-                "loginButton": "Anmeldung"
-            },
-            "italian": {
-                "title": "Benvenuto",
-                "link1": "Inglese",
-                "link2": "Scienza",
-                "link3": "Lingue",
-                "link4": "Matematica",
-                "discussionPage": "Discussioni",
-                "loginButton": "Accesso"
-            },
-            "hindi": {
-                "title": "स्वागत",
-                "link1": "अंग्रेज़ी",
-                "link2": "विज्ञान",
-                "link3": "भाषाएँ",
-                "link4": "गणित",
-                "discussionPage": "चर्चा",
-                "loginButton": "लॉग इन करें"
-            }
-            // Add translations for other languages as needed
-        };
+    const languageSelect = document.getElementById('languageSelect');
+    const loginButton = document.querySelector('.login-button');
 
-        const languageSelect = document.getElementById('languageSelect');
-        const loginButton = document.querySelector('.login-button');
+    languageSelect.addEventListener('change', () => {
+        const selectedLanguage = languageSelect.value;
+        translateEntireSite(selectedLanguage);
+    });
 
-        languageSelect.addEventListener('change', () => {
-            const selectedLanguage = languageSelect.value;
-            translateEntireSite(selectedLanguage);
+    function translateEntireSite(language) {
+        const translations = languageTranslations[language];
+        document.title = translations.title;
+        document.querySelectorAll('.container a').forEach((element, index) => {
+            element.textContent = translations['link' + (index + 1)];
         });
-
-        function translateEntireSite(language) {
-            const translations = languageTranslations[language];
-            document.title = translations.title;
-            document.querySelectorAll('.container a').forEach((element, index) => {
-                element.textContent = translations['link' + (index + 1)];
-            });
-            loginButton.textContent = translations.loginButton;
-            document.querySelectorAll('.container a')[4].textContent = translations.disc
+        loginButton.textContent = translations.loginButton;
+        document.querySelectorAll('.container a')[4].textContent = translations.discussionPage;
+    }
+</script>
