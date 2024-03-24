@@ -9,7 +9,6 @@ db = conn.cursor()
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
-        session.clear()
         return render_template("/login.html")
     else:
         username = request.form.get("username")
